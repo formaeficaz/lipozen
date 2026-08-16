@@ -286,7 +286,11 @@ selector svg {
     void wrap.offsetWidth;
     wrap.style.animation = "";
     // rola suavemente até a oferta (equivalente ao "scroll event" do VTurb)
-    try { wrap.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e) {}
+    // foca no card "3 Bottles" (.lz-popular) em vez do wrapper inteiro
+    try {
+      var scrollTarget = wrap.querySelector(".lz-popular") || wrap;
+      scrollTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (e) {}
   }
 
   // ---- Modo teste: revela por tempo de relógio ----
